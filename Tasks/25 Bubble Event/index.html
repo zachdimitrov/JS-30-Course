@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bubble Event</title>
+    <style>
+        .one {
+            background-color: darkcyan;
+            padding: 50px;
+        }
+        
+        .two {
+            background-color: chartreuse;
+            padding: 50px;
+        }
+        
+        .three {
+            background-color: darkgreen;
+            height: 20px;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body class="bod">
+    <div class="one">
+        <div class="two">
+            <div class="three"></div>
+        </div>
+    </div>
+    <script>
+        const divs = document.querySelectorAll("div");
+        divs.forEach(d => {
+            d.addEventListener("click", logText, {
+                capture: true,
+                once: true
+            });
+
+            function logText(e) {
+                e.stopPropagation();
+                console.log(this.classList);
+            }
+        });
+    </script>
+</body>
+
+</html>
